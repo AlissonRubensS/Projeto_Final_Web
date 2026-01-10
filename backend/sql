@@ -1,0 +1,26 @@
+CREATE TABLE Users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    access_type INTEGER NOT NULL,
+    email VARCHAR NOT NULL,
+    password VARCHAR NOT NULL,
+    phone_number VARCHAR,
+    url_photo VARCHAR
+);
+
+CREATE TABLE Itens (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    observations VARCHAR,
+    url_photo VARCHAR,
+    find_date TIMESTAMP,
+    find_local VARCHAR,
+    loss_date TIMESTAMP NOT NULL,
+    loss_local VARCHAR NOT NULL,
+    fk_Users_id INTEGER
+);
+ 
+ALTER TABLE Itens ADD CONSTRAINT FK_Itens_2
+    FOREIGN KEY (fk_Users_id)
+    REFERENCES Users (id)
+    ON DELETE CASCADE;
