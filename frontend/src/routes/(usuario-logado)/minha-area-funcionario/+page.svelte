@@ -1,9 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
-	import { User, Mail, Lock, Phone, SearchX, SearchCheck, MoveRight, Pencil, Trash2, MapPin, CalendarDays, Save } from '@lucide/svelte';
+	import { User, Mail, Lock, Phone, Briefcase, SearchX, SearchCheck, MoveRight, Pencil, Save } from '@lucide/svelte';
 
 	let isEditing = false;
-	let user = { id: 1, name: "", email: "", password: "", phone_number: "" };
+	let user = { id: 2, name: "", email: "", password: "", phone_number: "", access_type: "" };
 
 	const API_URL = "http://localhost:3000/users";
 
@@ -45,8 +45,8 @@
 			<User size={64} class="text-gray-400" />
 		</div>
 		<div class="flex-1 text-center md:text-left">
-			<h1 class="text-2xl font-bold text-gray-800 ">{user.name || "Usuario"}</h1>
-			<p class="text-gray-500 font-medium text-lg ">Aluno(a) - Engenharia de Software</p>
+			<h1 class="text-2xl font-bold text-gray-800 ">{user.name || "Funcionário(a)"}</h1>
+			<p class="text-gray-500 font-medium text-lg ">Funcionário(a) - {user.access_type || "Função"}</p>
 		</div>
 		<div class="flex gap-3">
 			{#if !isEditing}
@@ -92,48 +92,32 @@
 				<input type="text" class="grow" bind:value={user.phone_number} readonly={!isEditing} />
 			</label>
 		</div>
+		<div class="form-control w-full md:col-span-2">
+			<label class="label"><span class="label-text font-bold text-gray-700 uppercase text-xs">Função / Cargo</span></label>
+			<label class="input input-bordered flex items-center gap-2 {isEditing ? 'bg-white border-blue-400' : 'bg-gray-50'} h-12">
+				<Briefcase size={18} class="text-gray-400" />
+				<input type="text" class="grow" bind:value={user.access_type} readonly={!isEditing} />
+			</label>
+		</div>
 	</div>
 
 	{#if !isEditing}
-		<div class="bg-white rounded-2xl shadow-sm p-8 mb-8 border border-gray-100">
-			<h2 class="text-2xl font-bold text-gray-800 mb-2">Meus itens recentes</h2>
-			<p class="text-gray-500 mb-6">Confira uma lista de seus itens perdidos e encontrados mais recentes.</p>
-			
-			<div class="overflow-x-auto">
-				<table class="table table-zebra w-full border-separate border-spacing-y-2">
-					<thead>
-						<tr class="text-gray-400 uppercase text-xs border-none">
-							<th>Item</th><th>Data</th><th>Local</th><th class="text-center">Status</th><th class="text-center">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="bg-white shadow-sm rounded-lg">
-							<td class="rounded-l-lg"><div class="flex items-center gap-3 font-semibold text-gray-700"><SearchX size={18}/> Garrafa térmica azul</div></td>
-							<td class="text-blue-500 font-medium text-sm"><CalendarDays size={14} class="inline"/> 05/01/2026</td>
-							<td class="text-gray-600 text-sm"><MapPin size={14} class="inline text-blue-500"/> Biblioteca</td>
-							<td class="text-center font-bold">-</td>
-							<td class="rounded-r-lg flex justify-center gap-2">
-								<button class="btn btn-ghost btn-xs border border-gray-200"><Pencil size={14}/></button>
-								<span class="badge badge-warning border-none bg-yellow-100 text-yellow-700 font-bold uppercase py-3 text-[10px]">Perdido</span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-			<a href="/meus-itens-perdidos-aluno" class="card bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-all group">
-				<div class="bg-yellow-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-yellow-600"><SearchX size={24} /></div>
-				<h2 class="text-xl font-bold text-gray-800">Meus itens perdidos</h2>
-				<p class="text-gray-500 text-sm mb-4">Verifique os itens que você perdeu.</p>
+			<a href="/inventario" class="card bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-all group">
+				<div class="bg-yellow-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-yellow-600">
+					<SearchX size={24} />
+				</div>
+				<h2 class="text-xl font-bold text-gray-800">Lista de itens perdidos</h2>
+				<p class="text-gray-500 text-sm mb-4">Gerencie o inventário completo de itens do campus.</p>
 				<span class="text-blue-500 font-bold flex items-center gap-2 mt-auto">Acessar <MoveRight size={20} class="group-hover:translate-x-2 transition-transform" /></span>
 			</a>
 
-			<a href="/meus-itens-encontrados-aluno" class="card bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-all group">
-				<div class="bg-blue-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-blue-600"><SearchCheck size={24} /></div>
-				<h2 class="text-xl font-bold text-gray-800">Meus itens encontrados</h2>
-				<p class="text-gray-500 text-sm mb-4">Verifique os itens que você ajudou a encontrar.</p>
+			<a href="/itens-entregues-funcionario" class="card bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-all group">
+				<div class="bg-blue-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-blue-600">
+					<SearchCheck size={24} />
+				</div>
+				<h2 class="text-xl font-bold text-gray-800">Lista de itens entregues</h2>
+				<p class="text-gray-500 text-sm mb-4">Visualize o histórico de devoluções realizadas.</p>
 				<span class="text-blue-500 font-bold flex items-center gap-2 mt-auto">Acessar <MoveRight size={20} class="group-hover:translate-x-2 transition-transform" /></span>
 			</a>
 		</div>
