@@ -13,7 +13,7 @@ export const createUsers = async (req, res) => {
     }
 
     // Fazendo Hash da senha
-    const hashingPass = await bcrypt.hash(password.trim(), 10);
+    const hashingPass = await bcrypt.hash(`${password}`.trim(), 10);
 
     const response = await pool.query(
       `INSERT INTO USERS( name, access_type, email, password, phone_number, url_photo )
