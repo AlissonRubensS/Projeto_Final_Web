@@ -13,7 +13,7 @@ export const createItens = async (req, res) => {
       loss_date,
       loss_local,
       fk_Users_id,
-    } = req.bodys;
+    } = req.body;
 
     if (!name || !loss_date || !loss_local || !fk_Users_id) {
       throw new Error("Faltando dados");
