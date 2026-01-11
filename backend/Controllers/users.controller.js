@@ -13,7 +13,7 @@ export const createUsers = async (req, res) => {
     }
 
     // Fazendo Hash da senha
-    const randowSalt = bcrypt.randomInt(10, 16);
+    const randowSalt = bcrypt.randowSalt(10, 16);
     const hashingPass = await bcrypt.hash(password.trim(), randowSalt);
 
     const response = await pool.query(
