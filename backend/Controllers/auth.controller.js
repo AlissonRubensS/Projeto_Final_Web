@@ -1,6 +1,6 @@
 import { pool } from "../config/db.js";
 import { randomInt } from "node:crypto";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
