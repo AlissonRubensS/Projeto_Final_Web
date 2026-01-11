@@ -20,7 +20,7 @@ export const createItens = async (req, res) => {
     }
 
     await pool.query(
-      `INSERT INT Itens(name, observations, url_photo, find_date, find_local, loss_date, loss_local, fk_Users_id,)
+      `INSERT INTO Itens(name, observations, url_photo, find_date, find_local, loss_date, loss_local, fk_Users_id,)
         VALUES ($1,$2,$3,$4,$5,$6,$7,$8);`,
       [
         name,
