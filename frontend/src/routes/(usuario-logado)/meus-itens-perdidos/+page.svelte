@@ -1,22 +1,48 @@
-<script>
-	import { onMount } from 'svelte';
+<script lang="ts">
+	type Item = {
+		id: number;
+		name: string;
+		status: 'Perdido' | 'Encontrado';
+		loss_local: string;
+		loss_date: string;
+	};
 
-	let itens = [];
-	let carregando = true;
-	let erro = null;
+	let carregando = false;
+	let erro: string | null = null;
 
-	onMount(async () => {
-		await carregarItens();
-	});
+	let itens: Item[] = [
+		{
+			id: 1,
+			name: 'Carteira preta',
+			status: 'Perdido',
+			loss_local: 'Biblioteca Central',
+			loss_date: '12/01/2026'
+		},
+		{
+			id: 2,
+			name: 'Garrafa térmica',
+			status: 'Perdido',
+			loss_local: 'Restaurante Universitário',
+			loss_date: '10/01/2026'
+		},
+		{
+			id: 3,
+			name: 'Chave com chaveiro',
+			status: 'Encontrado',
+			loss_local: 'Bloco de Computação',
+			loss_date: '08/01/2026'
+		}
+	];
 
-	async function carregarItens() {
-		//<!-- logica do back -->}
-	}
 
-	async function marcarComoEncontrado(id) {
-		//<!-- logica do back -->
+	function marcarComoEncontrado(id: number) {
+		itens = itens.map((item) =>
+			item.id === id ? { ...item, status: 'Encontrado' } : item
+		);
 	}
 </script>
+
+
 
 <div class="bg-[#F5F9FF] min-h-screen px-10 py-8">
 	<h1 class="text-2xl font-bold mb-1">Meus itens perdidos</h1>
