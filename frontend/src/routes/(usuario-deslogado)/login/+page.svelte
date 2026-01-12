@@ -1,17 +1,75 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let email = '';
 	let password = '';
 	let error = '';
 	let loading = false;
 
+	
+	let users: any[] = [];
+
+	
+	onMount(() => {
+		users = [
+			{
+				id: 1,
+				email: 'joao@alu.ufc.br',
+				password: 'Joao@123',
+				role: 'USER'
+			},
+			{
+				id: 2,
+				email: 'seguranca@ufc.br',
+				password: 'Seg@123',
+				role: 'SECURITY'
+			}
+		];
+	});
+
 	async function handleLogin() {
-		//<!-- logica do back -->
-	}
+		error = '';
+		loading = true;
+
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+
+		// Busca usuário
+		const user = users.find(
+			(u) => u.email === email && u.password === password
+		);
+
+		if (!user) {
+			error = 'E-mail ou senha inválidos.';
+			loading = false;
+			return;
+		}
+
+		// Simula sessão 
+		const session = {
+			userId: user.id,
+			role: user.role,
+			email: user.email
+		};
+
+		console.log('Sessão iniciada:', session);
+
+		loading = false;
+
+		if (user.role === 'USER') {
+			goto('/pagina-inicial-aluno');
+			return;
+		}
+
+		if (user.role === 'SECURITY') {
+			goto('/usuario-logado/pagina-inicial-seguranca');
+		}
+
+		}
 </script>
 
 <div class="min-h-screen grid grid-cols-2">
+	
 	<div
 		class="relative bg-cover bg-center text-white px-12 flex flex-col justify-center"
 		style="background-image: url('/campus-ufc.jpg');"
@@ -24,8 +82,9 @@
 			</h1>
 
 			<p class="text-sm leading-relaxed mb-6">
-				Conectamos a comunidade acadêmica para recuperar pertences perdidos de forma rápida e
-				segura. Faça login para começar, ou cadastre-se se não possuir uma conta.
+				Conectamos a comunidade acadêmica para recuperar pertences
+				perdidos de forma rápida e segura. Faça login para começar,
+				ou cadastre-se se não possuir uma conta.
 			</p>
 
 			<div class="flex gap-3">
@@ -35,10 +94,14 @@
 		</div>
 	</div>
 
+	
 	<div class="flex items-center justify-center">
 		<div class="w-full max-w-md px-6">
+
 			<h2 class="text-3xl font-bold mb-1">Bem-Vindo (a)!</h2>
-			<p class="text-sm text-gray-500 mb-6">Preencha seus dados para acessar o sistema.</p>
+			<p class="text-sm text-gray-500 mb-6">
+				Preencha seus dados para acessar o sistema.
+			</p>
 
 			<!-- Abas -->
 			<div class="tabs tabs-bordered mb-6">
@@ -47,6 +110,7 @@
 			</div>
 
 			<form class="flex flex-col gap-4" on:submit|preventDefault={handleLogin}>
+
 				<div>
 					<label class="label text-sm font-medium">E-mail</label>
 					<input
