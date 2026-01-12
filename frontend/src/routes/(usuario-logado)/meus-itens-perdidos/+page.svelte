@@ -15,7 +15,7 @@
 			id: 1,
 			name: 'Carteira preta',
 			status: 'Perdido',
-			loss_local: 'Biblioteca Central',
+			loss_local: 'Biblioteca',
 			loss_date: '12/01/2026'
 		},
 		{
@@ -29,7 +29,7 @@
 			id: 3,
 			name: 'Chave com chaveiro',
 			status: 'Encontrado',
-			loss_local: 'Bloco de Computação',
+			loss_local: 'Unidade 1',
 			loss_date: '08/01/2026'
 		}
 	];
