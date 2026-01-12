@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let apelido = '';
 	let email = '';
@@ -8,10 +9,65 @@
 	let error = '';
 	let loading = false;
 
+	let users: any[] = [];
+
+	onMount(() => {
+		users = [
+			{
+				id: 1,
+				apelido: 'João Silva',
+				email: 'joao@alu.ufc.br',
+				password: 'Joao@123',
+				role: 'USER'
+			}
+		];
+	});
+
 	async function handleCadastro() {
-		//<!-- logica do back -->
+		error = '';
+		loading = true;
+
+
+		await new Promise((resolve) => setTimeout(resolve, 1200));
+
+		if (password !== confirmPassword) {
+			error = 'As senhas não coincidem.';
+			loading = false;
+			return;
+		}
+
+		if (!email.endsWith('@alu.ufc.br')) {
+			error = 'O cadastro é permitido apenas com e-mail institucional.';
+			loading = false;
+			return;
+		}
+
+		const emailExiste = users.some((u) => u.email === email);
+		if (emailExiste) {
+			error = 'Este e-mail já está cadastrado.';
+			loading = false;
+			return;
+		}
+
+		const novoUsuario = {
+			id: users.length + 1,
+			apelido,
+			email,
+			password,
+			role: 'USER'
+		};
+
+		users.push(novoUsuario);
+
+		console.log('Usuário cadastrado:', novoUsuario);
+		console.log('Base atual:', users);
+
+		loading = false;
+
+		goto('/login');
 	}
 </script>
+
 
 <div class="min-h-screen grid grid-cols-2">
 	<div
