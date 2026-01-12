@@ -6,7 +6,7 @@
 			'https://imgs.search.brave.com/0p3LXegmF0j-P9M5Y8h6kQHZP6S10qpzrzBYUXCSce0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnpz/dC5jb20uYnIvdGh1/bWJzLzUxLzE5LzEw/Ly05MTczOTY4NDku/anBn',
 		find_date: null,
 		find_local: null,
-		loss_date: '',
+		loss_date: '2020-10-10 12:30:00',
 		loss_local: '',
 		fk_Users_id: 1
 	};
@@ -16,7 +16,9 @@
 	 */
 	async function onSubmit(event) {
 		event.preventDefault();
+		console.log(item);
 		const res = await fetch('https://projeto-final-web-uy9e.onrender.com/itens', {
+			mode: 'no-cors',
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
