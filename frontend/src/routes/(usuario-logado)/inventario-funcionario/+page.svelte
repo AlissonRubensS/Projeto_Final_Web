@@ -27,7 +27,7 @@
 			created_at: '2025-10-12',
 			type: 'perdido',
 			status: 'aguardando_associacao',
-			image_url: '' 
+			image_url: '' 
 		},
 		{
 			id: 3,
@@ -53,7 +53,7 @@
 
 
 	
-	$: filteredItens = itens.filter(item => 
+	$: filteredItens = itens.filter(item => 
 		item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
 		item.location.toLowerCase().includes(searchTerm.toLowerCase())
 	);
@@ -88,11 +88,11 @@
 			
 			<div class="relative flex-1 min-w-[250px]">
 				<Search class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-				<input 
-					type="text" 
-					placeholder="BUSCAR ITENS POR NOME OU LOCAL..." 
+				<input 
+					type="text" 
+					placeholder="BUSCAR ITENS POR NOME OU LOCAL..." 
 					bind:value={searchTerm}
-					class="input input-bordered h-10 w-full pl-10 bg-gray-50 font-bold text-sm uppercase placeholder:normal-case placeholder:font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
+					class="input input-bordered h-10 w-full pl-10 bg-gray-50 font-bold text-sm uppercase placeholder:normal-case placeholder:font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" 
 				/>
 			</div>
 		</div>
@@ -147,7 +147,7 @@
 							</div>
 						</div>
 
-						<button 
+						<button 
 							on:click={() => verDetalhes(item.id)}
 							class="w-full bg-[#e2e8f0] hover:bg-gray-800 hover:text-white text-gray-700 font-black uppercase text-[11px] py-3 rounded-xl transition-colors tracking-wide">
 							Ver detalhes
