@@ -5,7 +5,7 @@
 	let isEditing = false;
 	let user = { id: 2, name: "", email: "", password: "", phone_number: "", access_type: "" };
 
-	const API_URL = "http://localhost:3000/users";
+	const API_URL = "https://projeto-final-web-uy9e.onrender.com/users"; // Atualizado para a API do Render
 
 	async function loadUser() {
 		try {
@@ -103,12 +103,12 @@
 
 	{#if !isEditing}
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-			<a href="/inventario" class="card bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-all group">
+			<a href="/inventario-funcionario" class="card bg-white shadow-sm border border-gray-100 p-8 hover:shadow-md transition-all group">
 				<div class="bg-yellow-100 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-yellow-600">
 					<SearchX size={24} />
 				</div>
-				<h2 class="text-xl font-bold text-gray-800">Lista de itens perdidos</h2>
-				<p class="text-gray-500 text-sm mb-4">Gerencie o inventário completo de itens do campus.</p>
+				<h2 class="text-xl font-bold text-gray-800">Ver inventário</h2>
+				<p class="text-gray-500 text-sm mb-4">Gerencie o catálogo completo de achados e perdidos.</p>
 				<span class="text-blue-500 font-bold flex items-center gap-2 mt-auto">Acessar <MoveRight size={20} class="group-hover:translate-x-2 transition-transform" /></span>
 			</a>
 
