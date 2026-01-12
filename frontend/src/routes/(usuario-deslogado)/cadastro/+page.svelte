@@ -9,11 +9,11 @@
 	let loading = false;
 
 	async function handleCadastro() {
-		<!-- logica do back -->}
+		//<!-- logica do back -->
+	}
 </script>
 
 <div class="min-h-screen grid grid-cols-2">
-	
 	<div
 		class="relative bg-cover bg-center text-white px-12 flex flex-col justify-center"
 		style="background-image: url('/campus-ufc.jpg');"
@@ -26,9 +26,8 @@
 			</h1>
 
 			<p class="text-sm leading-relaxed mb-6">
-				Conectamos a comunidade acadêmica para recuperar pertences
-				perdidos de forma rápida e segura. Faça login para começar,
-				ou cadastre-se se não possuir uma conta.
+				Conectamos a comunidade acadêmica para recuperar pertences perdidos de forma rápida e
+				segura. Faça login para começar, ou cadastre-se se não possuir uma conta.
 			</p>
 
 			<div class="flex gap-3">
@@ -41,11 +40,8 @@
 	<!-- COLUNA DIREITA -->
 	<div class="flex items-center justify-center">
 		<div class="w-full max-w-md px-6">
-
 			<h2 class="text-3xl font-bold mb-1">Bem-Vindo (a)!</h2>
-			<p class="text-sm text-gray-500 mb-6">
-				Preencha seus dados para acessar o sistema.
-			</p>
+			<p class="text-sm text-gray-500 mb-6">Preencha seus dados para acessar o sistema.</p>
 
 			<!-- Abas -->
 			<div class="tabs tabs-bordered mb-6">
@@ -54,7 +50,6 @@
 			</div>
 
 			<form class="flex flex-col gap-4" on:submit|preventDefault={handleCadastro}>
-
 				<div>
 					<label class="label text-sm font-medium">Apelido</label>
 					<input
@@ -75,9 +70,7 @@
 						bind:value={email}
 						required
 					/>
-					<p class="text-xs text-gray-400 mt-1">
-						Insira seu melhor e-mail
-					</p>
+					<p class="text-xs text-gray-400 mt-1">Insira seu melhor e-mail</p>
 				</div>
 
 				<div>
@@ -90,8 +83,8 @@
 						required
 					/>
 					<p class="text-xs text-gray-400 mt-1">
-						A senha deve conter 8 ou mais caracteres, incluindo
-						dígitos e pelo menos um caractere especial
+						A senha deve conter 8 ou mais caracteres, incluindo dígitos e pelo menos um caractere
+						especial
 					</p>
 				</div>
 

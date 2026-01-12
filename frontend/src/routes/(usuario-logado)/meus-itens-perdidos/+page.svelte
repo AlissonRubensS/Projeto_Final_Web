@@ -10,23 +10,22 @@
 	});
 
 	async function carregarItens() {
-	<!-- logica do back -->}
+		//<!-- logica do back -->}
 	}
 
 	async function marcarComoEncontrado(id) {
-		<!-- logica do back -->}
+		//<!-- logica do back -->
+	}
 </script>
 
 <div class="bg-[#F5F9FF] min-h-screen px-10 py-8">
-
 	<h1 class="text-2xl font-bold mb-1">Meus itens perdidos</h1>
 	<p class="text-gray-500 mb-6">
-		Gerencie os itens que você registrou como perdidos.
-		Marque como encontrado caso já tenha recuperado o item.
+		Gerencie os itens que você registrou como perdidos. Marque como encontrado caso já tenha
+		recuperado o item.
 	</p>
 
 	<div class="bg-white rounded-lg shadow-sm p-6 max-w-5xl">
-
 		<table class="table w-full">
 			<thead>
 				<tr class="text-gray-400 text-sm">
@@ -40,29 +39,23 @@
 			<tbody>
 				{#if carregando}
 					<tr>
-						<td colspan="4" class="text-center py-6 text-gray-400">
-							Carregando itens...
-						</td>
+						<td colspan="4" class="text-center py-6 text-gray-400"> Carregando itens... </td>
 					</tr>
-
 				{:else if erro}
 					<tr>
 						<td colspan="4" class="text-center py-6 text-red-500">
 							{erro}
 						</td>
 					</tr>
-
 				{:else if itens.length === 0}
 					<tr>
 						<td colspan="4" class="text-center py-6 text-gray-400">
 							Nenhum item perdido cadastrado.
 						</td>
 					</tr>
-
 				{:else}
 					{#each itens as item}
 						<tr class="border-t">
-
 							<td class="flex items-center gap-3">
 								<div class="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center">
 									<svg
@@ -100,13 +93,9 @@
 										Marcar como encontrado
 									</button>
 
-									<span class="badge badge-warning badge-sm">
-										Perdido
-									</span>
+									<span class="badge badge-warning badge-sm"> Perdido </span>
 								{:else}
-									<span class="badge badge-success badge-sm">
-										Encontrado
-									</span>
+									<span class="badge badge-success badge-sm"> Encontrado </span>
 								{/if}
 							</td>
 						</tr>
