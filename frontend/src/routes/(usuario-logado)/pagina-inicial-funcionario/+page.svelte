@@ -57,10 +57,10 @@
 
 <div class="bg-base-200 min-h-screen px-12 py-8">
 
-	<!-- TÍTULO -->
+	
 	<h1 class="text-2xl font-bold mb-6">Página Inicial</h1>
 
-	<!-- CARD INVENTÁRIO -->
+	
 	<div class="bg-base-100 rounded-xl p-6 flex justify-between items-center shadow-sm mb-8">
 		<div class="flex items-center gap-4">
 			<div class="w-12 h-12 rounded-full bg-warning/20 flex items-center justify-center">
@@ -80,7 +80,7 @@
 		</a>
 	</div>
 
-	<!-- INDICADORES -->
+	
 	<div class="grid grid-cols-3 gap-6 mb-10">
 		<div class="bg-base-100 rounded-xl p-6 shadow-sm">
 			<p class="text-sm text-gray-500 mb-1">Itens armazenados</p>
@@ -104,7 +104,7 @@
 		</div>
 	</div>
 
-	<!-- ITENS RECENTES -->
+	
 	<h2 class="font-semibold mb-4">Itens Recentes</h2>
 
 	<div class="grid grid-cols-4 gap-6">
