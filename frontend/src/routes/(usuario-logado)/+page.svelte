@@ -1,23 +1,69 @@
-<script>
+<script lang="ts">
 	import { onMount } from 'svelte';
 
-	let itensRecentes = [];
+	let itensRecentes: any[] = [];
 	let carregando = true;
-	let erro = null;
+	let erro: string | null = null;
 
 	onMount(async () => {
 		await carregarItensRecentes();
 	});
 
 	async function carregarItensRecentes() {
-		//<!-- logica do back -->
+		carregando = true;
+		erro = null;
+
+		try {
+			itensRecentes = [
+				{
+					id: 1,
+					name: 'Carteira preta',
+					status: 'Perdido',
+					observations: 'Carteira de couro com documentos',
+					loss_local: 'Biblioteca',
+					loss_date: '12/01/2026',
+					url_photo: '/carteirapreta.jpg'
+				},
+				{
+					id: 2,
+					name: 'Chave com chaveiro',
+					status: 'Encontrado',
+					observations: 'Chaves',
+					loss_local: 'Unidade 1',
+					loss_date: '10/01/2026',
+					url_photo: '/chave.jpg'
+				},
+				{
+					id: 3,
+					name: 'Garrafa térmica',
+					status: 'Perdido',
+					observations: 'Garrafa inox, marca Stanley',
+					loss_local: 'Restaurante Universitário',
+					loss_date: '09/01/2026',
+					url_photo: '/garrafa.jpg'
+				},
+				{
+					id: 4,
+					name: 'Fone de ouvido',
+					status: 'Encontrado',
+					observations: 'Fone bluetooth preto',
+					loss_local: 'Auditório 1',
+					loss_date: '08/01/2026',
+					url_photo: null
+				}
+			];
+		} catch (e) {
+			erro = 'Erro ao carregar itens recentes.';
+		} finally {
+			carregando = false;
+		}
 	}
+	import { goto } from '$app/navigation';
 </script>
 
 <div class="bg-[#F5F9FF] min-h-screen px-10 py-6">
 	<h1 class="text-3xl font-bold mb-6">Página Inicial</h1>
 
-	<!-- CARD MEUS ITENS PERDIDOS -->
 	<div class="card bg-white shadow-sm mb-10">
 		<div class="card-body flex flex-row justify-between items-center">
 			<div class="flex items-center gap-4">
@@ -31,11 +77,10 @@
 				</div>
 			</div>
 
-			<a href="/minha-area-aluno/meus-itens-perdidos" class="text-primary font-medium"> Acessar </a>
+			<a href="/meus-itens-perdidos" class="text-primary font-medium"> Acessar </a>
 		</div>
 	</div>
 
-	<!-- ITENS RECENTES -->
 	<h2 class="text-xl font-semibold mb-4">Itens Recentes</h2>
 
 	{#if carregando}
@@ -59,7 +104,7 @@
 					<div class="card-body p-4">
 						<span
 							class="badge mb-2
-								{item.status === 'Perdido' ? 'badge-warning' : 'badge-success'}"
+									{item.status === 'Perdido' ? 'badge-warning' : 'badge-success'}"
 						>
 							{item.status}
 						</span>

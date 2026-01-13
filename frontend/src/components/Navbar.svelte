@@ -4,7 +4,7 @@
 
 <div class="navbar bg-base-100 shadow-sm px-6 justify-between">
 	<div class="">
-		<a class="flex items-center gap-6" href="/">
+		<a class="flex items-center gap-6" href="/pagina-inicial-aluno">
 			<img class="w-9" src="/brasao-UFC.png" alt="logo UFC" />
 			<p class="font-bold text-2xl">Achados & Perdidos</p>
 		</a>
