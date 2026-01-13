@@ -59,6 +59,7 @@
 		}
 	}
 	import { goto } from '$app/navigation';
+	import { SearchX } from '@lucide/svelte';
 </script>
 
 <div class="bg-[#F5F9FF] min-h-screen px-10 py-6">
@@ -68,7 +69,7 @@
 		<div class="card-body flex flex-row justify-between items-center">
 			<div class="flex items-center gap-4">
 				<div class="bg-yellow-100 p-3 rounded-lg">
-					<img src="/icon-perdido.svg" alt="Ícone perdido" class="w-6" />
+					<SearchX class="text-yellow-600" size={24} />
 				</div>
 
 				<div>
