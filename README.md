@@ -20,6 +20,6 @@ O Back-End está em nuvem sempre rodando no link `https://projeto-final-web-uy9e
 
 Para rodar localmente na pasta "Projeto_Final_Web/backend" e execute o sequinte comando:
 
--`npm start`
+- `npm start`
 
 e o servidor vai rodar localmente
