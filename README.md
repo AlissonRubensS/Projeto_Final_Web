@@ -13,3 +13,13 @@ Depois que tenha finalizado a instalação das dependências necessárias para o
 - `npm run dev`
 
 Será fornecida uma URL, então copie ela e cole em algum navegador.
+
+## Executando Back-End do projeto
+
+O Back-End está em nuvem sempre rodando no link `https://projeto-final-web-uy9e.onrender.com` e as requisições podem ser feitas no link
+
+Para rodar localmente na pasta "Projeto_Final_Web/backend" e execute o sequinte comando:
+
+-`npm start`
+
+e o servidor vai rodar localmente
